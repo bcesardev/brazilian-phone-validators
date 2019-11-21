@@ -1,16 +1,16 @@
-package cesar.bruno.brazilian_phone_validators.validators;
+package cesar.bruno.brazilianphonevalidators.validators;
 
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianLandLineValidatorUtils.LAND_LINE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FIVE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FOUR_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_THREE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_TWO_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.LAND_LINE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FIVE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FOUR_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_THREE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_TWO_REGEX;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import cesar.bruno.brazilian_phone_validators.annotations.BrazilianMobileOrLandLine;
-import cesar.bruno.brazilian_phone_validators.utils.StringUtils;
+import cesar.bruno.brazilianphonevalidators.annotations.BrazilianMobileOrLandLine;
+import cesar.bruno.brazilianphonevalidators.utils.StringUtils;
 
 public class BrazilianLandLineValidator implements ConstraintValidator<BrazilianMobileOrLandLine, String> {
 

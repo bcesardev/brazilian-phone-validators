@@ -1,4 +1,4 @@
-package cesar.bruno.brazilian_phone_validators.utils;
+package cesar.bruno.brazilianphonevalidators.utils;
 
 public class BrazilianMobileValidatorUtils {
 

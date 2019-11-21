@@ -1,4 +1,4 @@
-package cesar.bruno.brazilian_phone_validators.annotations;
+package cesar.bruno.brazilianphonevalidators.annotations;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -14,15 +14,15 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 
-import cesar.bruno.brazilian_phone_validators.validators.BrazilianMobileOrLandLineValidator;
+import cesar.bruno.brazilianphonevalidators.validators.BrazilianMobileValidator;
 
-@Constraint(validatedBy = BrazilianMobileOrLandLineValidator.class)
+@Constraint(validatedBy = { BrazilianMobileValidator.class })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @ReportAsSingleViolation
-public @interface BrazilianMobileOrLandLine {
+public @interface BrazilianMobile {
 
-	String message() default "invalid brazilian mobile/land line number";
+	String message() default "invalid brazilian mobile number";
 
 	Class<?>[] groups() default {};
 

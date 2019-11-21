@@ -1,4 +1,4 @@
-package cesar.bruno.brazilian_phone_validators.annotations;
+package cesar.bruno.brazilianphonevalidators.annotations;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -14,7 +14,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 
-import cesar.bruno.brazilian_phone_validators.validators.BrazilianLandLineValidator;
+import cesar.bruno.brazilianphonevalidators.validators.BrazilianLandLineValidator;
 
 @Constraint(validatedBy = { BrazilianLandLineValidator.class })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })

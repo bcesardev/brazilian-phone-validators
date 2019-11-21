@@ -1,15 +1,15 @@
-package cesar.bruno.brazilian_phone_validators.validators;
+package cesar.bruno.brazilianphonevalidators.validators;
 
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianMobileValidatorUtils.MOBILE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianMobileValidatorUtils.NEGATE_NINE_SEQUENCE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianMobileValidatorUtils.NEGATE_SEVEN_SEQUENCE_REGEX;
-import static cesar.bruno.brazilian_phone_validators.utils.BrazilianMobileValidatorUtils.NEXTEL_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.MOBILE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEGATE_NINE_SEQUENCE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEGATE_SEVEN_SEQUENCE_REGEX;
+import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEXTEL_REGEX;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import cesar.bruno.brazilian_phone_validators.annotations.BrazilianMobileOrLandLine;
-import cesar.bruno.brazilian_phone_validators.utils.StringUtils;
+import cesar.bruno.brazilianphonevalidators.annotations.BrazilianMobileOrLandLine;
+import cesar.bruno.brazilianphonevalidators.utils.StringUtils;
 
 public class BrazilianMobileValidator implements ConstraintValidator<BrazilianMobileOrLandLine, String> {
 
