@@ -24,41 +24,34 @@ public class BrazilianMobileOrLandLineValidator implements ConstraintValidator<B
 
 		// Validation is only applied if there is a value entered. Otherwise it is not
 		// validated. Use @NotBlank to validate these condition.
-		if (value == null || value.equals("")) {
+		if (value == null || value.trim().equals("")) {
 			return true;
 		}
 
 		final String valueCleaned = StringUtils.replaceAllNonNumbers(value);
 
-		Boolean result = valueCleaned.length() < MOBILE_CLEANED_DIGITS_REGEX ? validateLandLine(valueCleaned, context)
-				: validateMobile(valueCleaned, context);
+		Boolean result = valueCleaned.length() < MOBILE_CLEANED_DIGITS_REGEX ? validateLandLine(valueCleaned)
+				: validateMobile(valueCleaned);
 
 		return result;
 	}
 
-	private Boolean validateMobile(String valueCleaned, ConstraintValidatorContext context) {
-
-		if (valueCleaned.matches(MOBILE_REGEX) && valueCleaned.matches(NEGATE_NINE_SEQUENCE_REGEX)) {
-			return true;
-		}
-
-		if (valueCleaned.matches(NEXTEL_REGEX) && valueCleaned.matches(NEGATE_SEVEN_SEQUENCE_REGEX)) {
-			return true;
-		}
-
-		return false;
+	private Boolean validateMobile(String value) {
+		return isValidMobile(value) || isValidNextel(value);
 	}
 
-	private Boolean validateLandLine(String valueCleaned, ConstraintValidatorContext context) {
-
-		if (valueCleaned.matches(LAND_LINE_REGEX) && valueCleaned.matches(NEGATE_SEQUENCE_OF_TWO_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_THREE_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_FOUR_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_FIVE_REGEX)) {
-			return true;
-		}
-
-		return false;
+	private Boolean validateLandLine(String value) {
+		return value.matches(LAND_LINE_REGEX) && value.matches(NEGATE_SEQUENCE_OF_TWO_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_THREE_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_FOUR_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_FIVE_REGEX);
 	}
 
+	private boolean isValidMobile(String value) {
+		return value.matches(MOBILE_REGEX) && value.matches(NEGATE_NINE_SEQUENCE_REGEX);
+	}
+
+	private boolean isValidNextel(String value) {
+		return value.matches(NEXTEL_REGEX) && value.matches(NEGATE_SEVEN_SEQUENCE_REGEX);
+	}
 }

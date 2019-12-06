@@ -19,26 +19,21 @@ public class BrazilianLandLineValidator implements ConstraintValidator<Brazilian
 
 		// Validation is only applied if there is a value entered. Otherwise it is not
 		// validated. Use @NotBlank to validate these condition.
-		if (value == null || value.equals("")) {
+		if (value == null || value.trim().equals("")) {
 			return true;
 		}
 
 		final String valueCleaned = StringUtils.replaceAllNonNumbers(value);
 
-		return validate(valueCleaned, context);
+		return validate(valueCleaned);
 
 	}
 
-	private Boolean validate(String valueCleaned, ConstraintValidatorContext context) {
-
-		if (valueCleaned.matches(LAND_LINE_REGEX) && valueCleaned.matches(NEGATE_SEQUENCE_OF_TWO_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_THREE_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_FOUR_REGEX)
-				&& valueCleaned.matches(NEGATE_SEQUENCE_OF_FIVE_REGEX)) {
-			return true;
-		}
-
-		return false;
+	private Boolean validate(String value) {
+		return value.matches(LAND_LINE_REGEX) && value.matches(NEGATE_SEQUENCE_OF_TWO_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_THREE_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_FOUR_REGEX)
+				&& value.matches(NEGATE_SEQUENCE_OF_FIVE_REGEX);
 	}
 
 }

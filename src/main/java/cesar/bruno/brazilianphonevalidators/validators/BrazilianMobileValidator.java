@@ -18,27 +18,25 @@ public class BrazilianMobileValidator implements ConstraintValidator<BrazilianMo
 
 		// Validation is only applied if there is a value entered. Otherwise it is not
 		// validated. Use @NotBlank to validate these condition.
-		if (value == null || value.equals("")) {
+		if (value == null || value.trim().equals("")) {
 			return true;
 		}
 
 		final String valueCleaned = StringUtils.replaceAllNonNumbers(value);
 
-		return validate(valueCleaned, context);
-
+		return validate(valueCleaned);
 	}
 
-	private Boolean validate(String valueCleaned, ConstraintValidatorContext context) {
+	private Boolean validate(String value) {
+		return isValidMobile(value) || isValidNextel(value);
+	}
 
-		if (valueCleaned.matches(MOBILE_REGEX) && valueCleaned.matches(NEGATE_NINE_SEQUENCE_REGEX)) {
-			return true;
-		}
+	private boolean isValidMobile(String value) {
+		return value.matches(MOBILE_REGEX) && value.matches(NEGATE_NINE_SEQUENCE_REGEX);
+	}
 
-		if (valueCleaned.matches(NEXTEL_REGEX) && valueCleaned.matches(NEGATE_SEVEN_SEQUENCE_REGEX)) {
-			return true;
-		}
-
-		return false;
+	private boolean isValidNextel(String value) {
+		return value.matches(NEXTEL_REGEX) && value.matches(NEGATE_SEVEN_SEQUENCE_REGEX);
 	}
 
 }
