@@ -1,16 +1,5 @@
 package cesar.bruno.brazilianphonevalidators.validators;
 
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.LAND_LINE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FIVE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_FOUR_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_THREE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianLandLineValidatorUtils.NEGATE_SEQUENCE_OF_TWO_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.MOBILE_CLEANED_DIGITS_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.MOBILE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEGATE_NINE_SEQUENCE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEGATE_SEVEN_SEQUENCE_REGEX;
-import static cesar.bruno.brazilianphonevalidators.utils.BrazilianMobileValidatorUtils.NEXTEL_REGEX;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -29,29 +18,15 @@ public class BrazilianMobileOrLandLineValidator implements ConstraintValidator<B
 		}
 
 		final String valueCleaned = StringUtils.replaceAllNonNumbers(value);
-
-		Boolean result = valueCleaned.length() < MOBILE_CLEANED_DIGITS_REGEX ? validateLandLine(valueCleaned)
-				: validateMobile(valueCleaned);
-
-		return result;
+		return isValidLandLine(valueCleaned, context) || isValidMobile(valueCleaned, context);
 	}
 
-	private Boolean validateMobile(String value) {
-		return isValidMobile(value) || isValidNextel(value);
+	private boolean isValidMobile(String valueCleaned, ConstraintValidatorContext context) {
+		return new BrazilianMobileValidator().isValid(valueCleaned, context);
 	}
 
-	private Boolean validateLandLine(String value) {
-		return value.matches(LAND_LINE_REGEX) && value.matches(NEGATE_SEQUENCE_OF_TWO_REGEX)
-				&& value.matches(NEGATE_SEQUENCE_OF_THREE_REGEX)
-				&& value.matches(NEGATE_SEQUENCE_OF_FOUR_REGEX)
-				&& value.matches(NEGATE_SEQUENCE_OF_FIVE_REGEX);
+	private boolean isValidLandLine(String valueCleaned, ConstraintValidatorContext context) {
+		return new BrazilianLandLineValidator().isValid(valueCleaned, context);
 	}
 
-	private boolean isValidMobile(String value) {
-		return value.matches(MOBILE_REGEX) && value.matches(NEGATE_NINE_SEQUENCE_REGEX);
-	}
-
-	private boolean isValidNextel(String value) {
-		return value.matches(NEXTEL_REGEX) && value.matches(NEGATE_SEVEN_SEQUENCE_REGEX);
-	}
 }

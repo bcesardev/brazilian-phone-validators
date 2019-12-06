@@ -16,129 +16,72 @@ public class BrazilianMobileValidatorTest {
 	@Test
 	public void validNumberStartWithTwoShouldReturnTrue() {
 
-		mobileNumber = "11 2112-3334";
+		mobileNumber = "11 92112-3334";
 		result = validator.isValid(mobileNumber, null);
 		assertTrue(result);
 
-		mobileNumber = "(11) 2112-3334";
+		mobileNumber = "(11) 92112-3334";
 		result = validator.isValid(mobileNumber, null);
 		assertTrue(result);
 
-		mobileNumber = "1121123334";
+		mobileNumber = "11921123334";
 		result = validator.isValid(mobileNumber, null);
 		assertTrue(result);
 
-		mobileNumber = "112112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-	}
-
-	@Test
-	public void validNumberStartWithThreeShouldReturnTrue() {
-
-		mobileNumber = "11 3112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "(11) 3112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "1131123334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "113112-3334";
+		mobileNumber = "1192112-3334";
 		result = validator.isValid(mobileNumber, null);
 		assertTrue(result);
 	}
 
-	@Test
-	public void validNumberStartWithFourShouldReturnTrue() {
-
-		mobileNumber = "11 4112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "(11) 4112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "1141123334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "114112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-	}
-
-	@Test
-	public void validNumberStartWithFiveShouldReturnTrue() {
-
-		mobileNumber = "11 5112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "(11) 5112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "1151123334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-
-		mobileNumber = "115112-3334";
-		result = validator.isValid(mobileNumber, null);
-		assertTrue(result);
-	}
 
 	@Test
 	public void invalidNumbersShouldReturnFalse() {
 
-		mobileNumber = "123465";
+		mobileNumber = "12346123445";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "1111111111";
+		mobileNumber = "11111111111";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "2222222222";
+		mobileNumber = "22222222222";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "3333333333";
+		mobileNumber = "33333333333";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "4444444444";
+		mobileNumber = "44444444444";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "5555555555";
+		mobileNumber = "55555555555";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "6666666666";
+		mobileNumber = "66666666666";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "7777777777";
+		mobileNumber = "77777777777";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "8888888888";
+		mobileNumber = "88888888888";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "9999999999";
+		mobileNumber = "99999999999";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
-		mobileNumber = "1189585655";
+		mobileNumber = "11289585655";
 		result = validator.isValid(mobileNumber, null);
 		assertFalse(result);
 
 	}
+	
+	
 }
